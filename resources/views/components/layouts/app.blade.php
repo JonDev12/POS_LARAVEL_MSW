@@ -4,9 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{$title ?? config('app.name')}}</title>
+    <title>{{ $title ?? config('app.name') }}</title>
     @include('components.layouts.partials.styles')
 </head>
+
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper">
         <!-- Preloader -->
@@ -29,6 +30,7 @@
             <!-- Main content -->
             <section class="content">
                 <div class="container-fluid">
+                    @livewire('messages')
                     {{ $slot }}
                     <!-- /.row -->
                 </div><!--/. container-fluid -->
@@ -45,6 +47,39 @@
     <!-- ./wrapper -->
 
     @include('components.layouts.partials.scripts')
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('close-modal', (idModal) => {
+                $('#' + idModal).modal('hide');
+            })
+        })
+
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('open-modal', (idModal) => {
+                $('#' + idModal).modal('show');
+            })
+        })
+
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('delete', (e) => {
+                //alert(e.id + '-' + e.eventName)
+                Swal.fire({
+                    title: "¿Estás seguro?",
+                    text: "Esta acción no se puede deshacer",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Si, eliminar registro",
+                    cancelButtonText: "Cancelar",
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        Livewire.dispatch(e.eventName, { id: e.id })
+                    }
+                });
+            })
+        })
+    </script>
     <!-- PLUGINS -->
 
 </body>

@@ -10,6 +10,9 @@
         {{$slot}}
     </div>
     <div class="card-footer">
-        {{$cardFooter}}
+        <!--Revisar diseño @MadeHV13-->
+        <!--<div>-->
+            {{$cardFooter}}
+        <!--</div>-->
     </div>
 </div>
