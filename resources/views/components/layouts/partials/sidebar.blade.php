@@ -41,6 +41,15 @@
             </a>
         </li>
 
+        <li class="nav-item"> 
+            <a href="{{route('products')}}" class="nav-link">
+            <i class="nav-icon fa-solid fa-bottle-water"></i>
+              <p>
+                Productos
+              </p>
+            </a>
+        </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
