@@ -22,17 +22,17 @@
                     <td>{{$category->id}}</td>
                     <td>{{$category->name}}</td>
                     <td>
-                        <a href="{{route('categories.show', $category)}}" class="btn btn-success btn-xs" title="Ver item">
+                        <a href="{{route('categories.show', $category)}}" class="btn btn-success btn-sm" title="Ver item">
                             <i class="far fa-eye"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="#" wire:click="edit({{$category->id}})" class="btn btn-primary btn-xs" title="Editar item">
+                        <a href="#" wire:click="edit({{$category->id}})" class="btn btn-primary btn-sm" title="Editar item">
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
                     <td>
-                        <a wire:click="$dispatch('delete', {id: {{$category->id}}, eventName:'destroyCategory'})" class="btn btn-danger btn-xs" title="Elminar item">
+                        <a wire:click="$dispatch('delete', {id: {{$category->id}}, eventName:'destroyCategory'})" class="btn btn-danger btn-sm" title="Elminar item">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>
