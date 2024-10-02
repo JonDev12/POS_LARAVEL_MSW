@@ -43,7 +43,7 @@
 
         <li class="nav-item"> 
             <a href="{{route('products')}}" class="nav-link">
-            <i class="nav-icon fa-solid fa-bottle-water"></i>
+            <i class="nav-icon fa fa-cubes"></i>
               <p>
                 Productos
               </p>
