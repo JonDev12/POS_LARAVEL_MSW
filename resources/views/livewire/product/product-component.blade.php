@@ -30,6 +30,7 @@
                     <td>{{$product->precio_venta}}</td>
                     <td>{{$product->stock}}</td>
                     <td>{{$product->category_id}}</td>
+                    <td>Active</td>
                     <td>
                         <a href="{{route('products.show', $product)}}" class="btn btn-success btn-sm" title="Ver item">
                             <i class="far fa-eye"></i>

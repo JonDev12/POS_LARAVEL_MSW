@@ -8,3 +8,4 @@
 <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 <!-- SweetAlert -->
 <link rel="stylesheet" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
