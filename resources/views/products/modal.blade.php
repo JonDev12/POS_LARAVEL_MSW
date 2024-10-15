@@ -18,6 +18,9 @@
                 <label for="category_id">Categoría:</label>
                 <select wire:model = 'category_id' id = "category_id" class = "form-control">
                         <option value="0">Seleccionar</option>
+                        @foreach ($this->categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
                 </select>
                 @error('category_id')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -38,7 +41,7 @@
             {{-- input precio compra --}}
             <div class="form-group col-md-4">
                 <label for="precio_compra">Precio de compra:</label>
-                <input wire:model="precio_compra" type="number" class="form-control"
+                <input wire:model="precio_compra" min="0" step="any" type="number" class="form-control"
                     placeholder="Precio de compra" id="precio_compra">
                 @error('precio_compra')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -48,7 +51,7 @@
             {{-- input precio venta --}}
             <div class="form-group col-md-4">
                 <label for="precio_venta">Precio de venta:</label>
-                <input wire:model="precio_venta" type="number" class="form-control"
+                <input wire:model="precio_venta" min="0" step="any" type="number" class="form-control"
                     placeholder="Precio de venta" id="precio_venta">
                 @error('precio_venta')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -68,7 +71,7 @@
             {{-- input stock --}}
             <div class="form-group col-md-4">
                 <label for="stock">Stock:</label>
-                <input wire:model="stock" type="number" class="form-control"
+                <input wire:model="stock" min="0" type="number" class="form-control"
                     placeholder="Stock del producto" id="stock">
                 @error('stock')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -78,7 +81,7 @@
             {{-- input stock minimo --}}
             <div class="form-group col-md-4">
                 <label for="stock_minimo">Stock mínimo:</label>
-                <input wire:model="stock_minimo" type="number" class="form-control"
+                <input wire:model="stock_minimo" min="0" type="number" class="form-control"
                     placeholder="Stock mínimo" id="stock_minimo">
                 @error('stock_minimo')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
@@ -89,7 +92,7 @@
             <div class="form-group col-md-4">
                 <label for="fecha_vencimiento">Fecha de vencimiento:</label>
                 <input wire:model="fecha_vencimiento" type="date" class="form-control"
-                    placeholder="Fecha de vencimiento" id="fecha_vencimiento">
+                id="fecha_vencimiento">
                 @error('fecha_vencimiento')
                     <div class="alert alert-danger w-100 mt-2">{{ $message }}</div>
                 @enderror
@@ -98,7 +101,7 @@
             {{-- checkbox active --}}
             <div class="form-group col-md-3">
                 <div class="icheck-primary">
-                    <input wire:model='active' type="checkbox" id="active">
+                    <input wire:model='active' type="checkbox" id="active" checked>
                     <label for="active">
                         ¿Está activo?
                     </label>
@@ -122,13 +125,18 @@
 
             {{-- Imagen --}}
             <div class="form-group col-md-6">
-                   <img src="" alt="">
+                @if ($Id>0)
+                <x-image :item="$product= App\Models\Product::find($Id)" size="200" float="float-right"/>
+                @endif
+                @if ($this->image)
+                <img src="{{$image->temporaryUrl()}}" class="rounded float-right" width="200">
+                @endif
             </div>
 
         </div>
 
         <hr>
-        <button class="btn btn-primary float-right">{{ $Id == 0 ? 'Guardar' : 'Editar' }}</button>
+        <button wire:loading.atr='disabled' class="btn btn-primary float-right">{{ $Id == 0 ? 'Guardar' : 'Editar' }}</button>
     </form>
     
 </x-modal>

@@ -25,14 +25,19 @@
             @forelse ($products as $product)
                 <tr>
                     <td>{{$product->id}}</td>
-                    <td>Imagen</td>
+                    <td> 
+                        <x-image :item="$product"/> 
+                    </td>
                     <td>{{$product->name}}</td>
-                    <td>{{$product->precio_venta}}</td>
-                    <td>{{$product->stock}}</td>
-                    <td>{{$product->category_id}}</td>
-                    <td>Active</td>
+                    <td>{!!$product->precio!!}</td>
+                    <td>{!!$product->stockLabel!!}</td>
                     <td>
-                        <a href="{{route('products.show', $product)}}" class="btn btn-success btn-sm" title="Ver item">
+                        <a class="badge badge-secondary" href="{{route('categories.show',$product->category->id)}}">{{$product->category->name}}</a>
+                        
+                    </td>
+                    <td>{!!$product->activeLabel!!}</td>
+                    <td>
+                        <a href="{{route('products.show',$product)}}" class="btn btn-success btn-sm" title="Ver item">
                             <i class="far fa-eye"></i>
                         </a>
                     </td>
@@ -42,7 +47,7 @@
                         </a>
                     </td>
                     <td>
-                        <a wire:click="$dispatch('delete', {id: {{$product->id}}, eventName:'destroyProduct'})" class="btn btn-danger btn-sm" title="Elminar item">
+                        <a wire:click="destroy({{ $product->id }})" class="btn btn-danger btn-sm" title="Eliminar item">
                             <i class="far fa-trash-alt"></i>
                         </a>
                     </td>
