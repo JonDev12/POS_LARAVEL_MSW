@@ -7,6 +7,7 @@ use App\Livewire\Product\ProductComponent;
 use App\Livewire\Product\ProductShow;
 use App\Livewire\Category\CategoryShow;
 use App\Livewire\Home\Inicio as HomeInicio;
+use App\Livewire\User\UserComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,5 @@ Route::get('/categorias', CategoryComponent::class)->name('categories');
 Route::get('/categorias/{category}', CategoryShow::class)->name('categories.show');
 Route::get('/productos', ProductComponent::class)->name('products');
 Route::get('/productos/{product}', ProductShow::class)->name('products.show');
+Route::get('/usuarios', UserComponent::class)->name('users');
 
