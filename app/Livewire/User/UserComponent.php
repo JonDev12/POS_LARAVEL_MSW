@@ -4,6 +4,7 @@ namespace App\Livewire\User;
 
 use App\Models\User;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Title;
@@ -129,6 +130,21 @@ class UserComponent extends Component
         $this->dispatch('msg', 'Usuario actualizado con exito');
         $this->clean();
     }
+
+    #[On('destroyUser')]
+    public function destroy($id)
+    {
+        $user = User::findOrfail($id);
+
+
+            if($user->image!=null){
+                Storage::delete('public/'.$user->image->url);
+                $user->image()->delete();
+            }
+
+        $user->delete();
+        $this->dispatch('msg', 'Usuario eliminado con exito');
+     }
 
     public function clean(){
         $this->reset(['Id','name','email','password','admin','active','image','imageModel']);

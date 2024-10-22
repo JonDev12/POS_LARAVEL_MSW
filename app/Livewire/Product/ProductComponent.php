@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Livewire\Product;
-use App\Models\Category;
-use App\Livewire\Product\On;
 use App\Models\Product;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Livewire\Attributes\Title;
-use Livewire\WithFileUploads;
+use App\Models\Category;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\Storage;
 
 #[Title('Productos')]
