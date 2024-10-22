@@ -21,7 +21,7 @@
           </x-slot>
 
           
-          @forelse ($user as $user)
+          @forelse ($users as $user)
               
              <tr>
                 <td>{{$user->id}}</td>
@@ -30,10 +30,10 @@
                 </td>
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
-                <td>{{$user->admin}}</td>
-                <td>{{$user->active}}</td>
+                <td>{{$user->admin ? 'Administrador' : 'Vendedor'}}</td>
+                <td>{{$user->active ? 'Activo' : 'Inactivo'}}</td>
                 <td>
-                    <a href="{{route('users.show',$user)}}" class="btn btn-success btn-sm" title="Ver">
+                    <a href="#" class="btn btn-success btn-sm" title="Ver">
                         <i class="far fa-eye"></i>
                     </a>
                 </td>
@@ -60,7 +60,7 @@
        </x-table>
  
        <x-slot:cardFooter>
-            {{$user->links()}}
+            {{$users->links()}}
 
        </x-slot>
     </x-card>
@@ -116,9 +116,17 @@
                 </div>
             </div>
             {{-- Imagen --}}
-            <div class="form-group col-md-6">
-                <label for="image">Imagen:</label>
+            <div class="form-group col-md-12">
+                <label for="image">Imagen:</label> <br>
                 <input wire:model='image' type="file"  id="image" accept="image/*">
+            </div>
+            <div class="col-md-12">
+                @if ($Id>0)
+                    <x:image :item="$user = App\Models\User::find($Id)" size="200" float="float-right"/>
+                @endif
+                @if ($image)
+                    <img src="{{$image->temporaryUrl()}}" class="rounded float-left" alt="" width="200">
+                @endif
             </div>
         </div>
         <hr>
