@@ -24,7 +24,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-              <a href="{{route('inicio')}}" class="nav-link">
+              <a href="{{route('home')}}" class="nav-link">
                 <i class="nav-icon fas fa-store"></i>
                 <p>
                   Inicio

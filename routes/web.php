@@ -21,18 +21,19 @@ use App\Livewire\User\UserShow;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/inicio', HomeInicio::class)->name('inicio');
-Route::get('/categorias', CategoryComponent::class)->name('categories');
-Route::get('/categorias/{category}', CategoryShow::class)->name('categories.show');
-Route::get('/productos', ProductComponent::class)->name('products');
-Route::get('/productos/{product}', ProductShow::class)->name('products.show');
-Route::get('/usuarios', UserComponent::class)->name('users');
-Route::get('/usuarios/{user}', UserShow::class)->name('users.show');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', HomeInicio::class)->name('home')->middleware(['auth']);
+Route::get('/categorias', CategoryComponent::class)->name('categories')->middleware(['auth']);
+Route::get('/categorias/{category}', CategoryShow::class)->name('categories.show')->middleware(['auth']);
+Route::get('/productos', ProductComponent::class)->name('products')->middleware(['auth']);
+Route::get('/productos/{product}', ProductShow::class)->name('products.show')->middleware(['auth']);
+Route::get('/usuarios', UserComponent::class)->name('users')->middleware(['auth']);
+Route::get('/usuarios/{user}', UserShow::class)->name('users.show')->middleware(['auth']);
 
