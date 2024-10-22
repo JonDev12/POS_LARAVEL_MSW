@@ -31,9 +31,9 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->admin ? 'Administrador' : 'Vendedor'}}</td>
-                <td>{{$user->active ? 'Activo' : 'Inactivo'}}</td>
+                <td>{!!$user->activeLabel!!}</td>
                 <td>
-                    <a href="#" class="btn btn-success btn-sm" title="Ver">
+                    <a href="{{route('users.show', $user)}}" class="btn btn-success btn-sm" title="Ver">
                         <i class="far fa-eye"></i>
                     </a>
                 </td>
