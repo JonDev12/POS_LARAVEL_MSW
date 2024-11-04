@@ -6,7 +6,7 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\Category;
 use Livewire\WithPagination;
-    use Livewire\Attributes\On;
+use Livewire\Attributes\On;
 
 #[Title('Categorías')]
 class CategoryComponent extends Component

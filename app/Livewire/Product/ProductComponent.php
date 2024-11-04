@@ -13,7 +13,6 @@ use Livewire\Attributes\Computed;
 use Illuminate\Support\Facades\Storage;
 
 #[Title('Productos')]
-
 class ProductComponent extends Component
 {
     use WithFileUploads;
