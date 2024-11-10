@@ -27,15 +27,14 @@
 
                 </thead>
                 <tbody>
-                   
+                    @forelse ($cart as $product)
                     <tr>
-                        <td></td>
+                        <td>{{$product->id}}</td>
                         <td>
-                            <img src="" width="50" class="img-fluid rounded">
-
+                            <x:image :item="$product->associateModel" size="60"/>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$product->name}}</td>
+                        <td>{{$product->associateModel->precio}}</td>
                         <td>
                             <!-- Botones para aumentar o disminuir la cantidad del producto en el carrito -->
                             <button class="btn btn-primary btn-xs" >
@@ -49,7 +48,7 @@
                             </button>
                             
                         </td>
-                        <td>0</td>
+                        <td>{{$product->quantity * $product->price}}</td>
                         <td>
                             <!-- Boton para eliminar el producto del carrito -->
                             <button class="btn btn-danger btn-xs" title="Eliminar">
@@ -58,10 +57,13 @@
                         </td>
 
                     </tr>
+                    @empty
+                       <tr>
+                            <td colspan="10">Sin Registros</td>
+                        </tr> 
+                    @endforelse
 
-                    <tr>
-                        <td colspan="10">Sin Registros</td>
-                    </tr>
+                    
                   
                     <tr>
                         <td colspan="4"></td>
