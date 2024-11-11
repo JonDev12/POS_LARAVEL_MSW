@@ -64,3 +64,55 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Steps to Install this Project on Your PC
+
+To install this Laravel project, make sure you have the following installed:
+- **Node.js**
+- **Composer**
+- **PHP v8** or later
+
+### 1. Extract the Project Files
+   - Unzip the `.zip` file from the repository to your desired project folder.
+
+   - **Image Configuration (Faker)**: If you’re using Faker to generate images, you may need to adjust the `Image.php` file within the vendor folder:
+     - Open `vendor\fakerphp\faker\src\Faker\Provider\Image.php`
+     - Add the following lines to bypass SSL verification:
+
+       ```php
+       curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false); // Disable SSL host verification
+       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Disable SSL peer verification
+       ```
+
+### 2. Set Up the Database
+   - Open MySQL Workbench and create a new database with the same name as specified in the `.zip` file.
+   - Go to the **Administration** tab, select **Data Import/Restore**, and choose the SQL file from the extracted `.zip` to import the tables.
+
+### 3. Configure Database Connection
+   - In the project root, create a `.env` file.
+   - Add your database credentials and any other necessary environment variables to configure the connection.
+
+### 4. Install Dependencies and Complete Setup
+   - Open **Visual Studio Code** and run the following commands in the integrated terminal:
+
+     ```shell
+     composer install
+     npm install
+     php artisan storage:link
+     php artisan migrate:refresh --seed
+     ```
+
+   These commands will install the necessary packages, link the storage directory, and set up the database with seed data.
+
+---
+
+## Run the project
+To start the Laravel development server, run the following command in the terminal:
+
+```shell
+php artisan serve
+```
+
+## About the Developers
+
+This project was developed by Jonathan Martinez and Madelene Vargas, a software development team from Mexico. The project was created as part of their university studies.
