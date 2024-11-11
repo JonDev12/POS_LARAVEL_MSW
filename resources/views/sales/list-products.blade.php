@@ -26,7 +26,6 @@
                 <td>
 
                 <button
-                    wire:click="addProduct({{$product->id}})"
                     class="btn btn-primary btn-sm"
                     title="Agregar">
                     <i class="fas fa-plus-circle"></i>
