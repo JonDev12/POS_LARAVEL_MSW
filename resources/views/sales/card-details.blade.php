@@ -27,29 +27,28 @@
 
                 </thead>
                 <tbody>
-                   
+                   @forelse ($cart as $product)
                     <tr>
-                        <td></td>
+                        <td>{{$product->id}}</td>
                         <td>
-                            <img src="" width="50" class="img-fluid rounded">
-
+                            <x:image :item="$product->associatedModel" size="60"/>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>{!!$product->name!!}</td>
+                        <td>{!!$product->associatedModel->precio!!}</td>
                         <td>
                             <!-- Botones para aumentar o disminuir la cantidad del producto en el carrito -->
                             <button class="btn btn-primary btn-xs" >
                                 - 
                             </button>
 
-                            <span class="mx-1">0</span>
+                            <span class="mx-1">{{$product->quantity}}</span>
 
                             <button class="btn btn-primary btn-xs" >
                                 +
                             </button>
                             
                         </td>
-                        <td>0</td>
+                        <td>{{money($product->quantity * $product->price)}}</td>
                         <td>
                             <!-- Boton para eliminar el producto del carrito -->
                             <button class="btn btn-danger btn-xs" title="Eliminar">
@@ -58,10 +57,12 @@
                         </td>
 
                     </tr>
-
-                    <tr>
-                        <td colspan="10">Sin Registros</td>
-                    </tr>
+                    @empty
+                       <tr>
+                            <td colspan="10">Sin Registros</td>
+                        </tr>
+                    @endforelse
+                    
                   
                     <tr>
                         <td colspan="4"></td>
@@ -70,8 +71,7 @@
                         </td>
                         <td>
                             <h5>
-                                <span class="badge badge-pill badge-secondary">
-                                    0</span>
+                                <span class="badge badge-pill badge-secondary">{{money($total)}}</span>
                             </h5>
                         </td>
                         <td></td>
@@ -80,7 +80,7 @@
 
                         <td colspan="7">
                             <strong>Total en letras:</strong>
-                            0
+                            {{numerosLetras($total)}}
                         </td>
                     </tr>
                 </tbody>

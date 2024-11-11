@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Sale;
 
+use App\Models\Cart;
 use App\Models\Product;
-use Livewire\Attributes\Computed;
 use Livewire\Component;
-use Livewire\Attributes\Title;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
+use Livewire\Attributes\Computed;
 
 #[Title('Ventas')]
 class SaleCreate extends Component
@@ -24,8 +25,15 @@ class SaleCreate extends Component
         }
         $this->totalRegistros = Product::count();
         return view('livewire.sale.sale-create', [
-            'products' => $this->products()
+            'products' => $this->products(),
+            'cart' => Cart::getCart(),
+            'total' => Cart::getTotal()
         ]);
+    }
+
+    public function addProduct(Product $product){
+        //dump($product);
+        Cart::add($product);
     }
 
     //Prppiedad para obtener los productos
