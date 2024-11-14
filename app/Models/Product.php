@@ -14,7 +14,7 @@ class Product extends Model
         return $this->morphOne('App\Models\Image','imageable');
     }
     public function category(){
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
     //Atributos
     protected function stockLabel() : Attribute 
