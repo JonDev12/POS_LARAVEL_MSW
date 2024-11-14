@@ -27,7 +27,8 @@ class SaleCreate extends Component
         return view('livewire.sale.sale-create', [
             'products' => $this->products(),
             'cart' => Cart::getCart(),
-            'total' => Cart::getTotal()
+            'total' => Cart::getTotal(),
+            'totalArticulos' => Cart::totalArticulos()
         ]);
     }
 
