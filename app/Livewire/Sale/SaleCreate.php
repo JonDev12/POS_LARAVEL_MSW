@@ -31,9 +31,31 @@ class SaleCreate extends Component
         ]);
     }
 
+    //Agregar producto al carrito
     public function addProduct(Product $product){
         //dump($product);
         Cart::add($product);
+    }
+
+    //Decrementar producto del carrito
+    public function decrement($id){
+        Cart::decrement($id);
+    }
+
+    //Incrementar producto del carrito
+    public function increment($id){
+        Cart::increment($id);
+    }
+
+    //Eliminar producto del carrito
+    public function removeItem($id){
+        Cart::removeItem($id);
+    }
+
+    //Cancelar venta
+    public function clear(){
+        Cart::clear();
+        $this->dispatch('msg', 'Venta cancelada');
     }
 
     //Prppiedad para obtener los productos

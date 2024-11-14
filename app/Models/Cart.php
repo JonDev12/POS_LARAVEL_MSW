@@ -30,4 +30,28 @@ class Cart
     public static function getTotal(){
         return \Cart::session(userID())->getTotal();
     }
+
+    //Decrementar carrito
+    public static function decrement($id){
+        \Cart::session(userID())->update($id, [
+            'quantity' => -1
+        ]);
+    }
+
+    //Incrementar carrito
+    public static function increment($id){
+        \Cart::session(userID())->update($id, [
+            'quantity' => + 1
+        ]);
+    }
+
+    //Eliminar producto del carrito
+    public static function removeItem($id){
+        \Cart::session(userID())->remove($id);
+    }
+
+    //Limpiar carrito
+    public static function clear(){
+        \Cart::session(userID())->clear();
+    }
 }
