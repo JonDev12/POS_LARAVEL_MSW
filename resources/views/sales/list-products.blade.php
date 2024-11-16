@@ -17,27 +17,12 @@
 
             </x-slot>
             @forelse ($products as $product)
-            <tr>
-                <td>{{$product->id}}</td>
-                <td><x-image :item="$product" size="60"/></td>
-                <td>{{$product->name}}</td>
-                <td>{!!$product->precio!!}</td>
-                <td>{!!$product->stockLabel!!}</td>
-                <td>
-
-                <button
-                    wire:click="addProduct({{$product->id}})"
-                    class="btn btn-primary btn-sm"
-                    title="Agregar">
-                    <i class="fas fa-plus-circle"></i>
-                </button>
-            </td>
-        </tr>
-        @empty
-            <tr>
-                <td colspan="10">Sin Registros</td>
-            </tr> 
-        @endforelse
+            <livewire:sale.product-row :product="$product" :wire:key="$product->id">
+            @empty
+                <tr>
+                    <td colspan="10">Sin Registros</td>
+                </tr> 
+            @endforelse
     </x-table>
 
 </div>

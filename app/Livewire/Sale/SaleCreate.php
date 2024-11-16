@@ -5,6 +5,7 @@ namespace App\Livewire\Sale;
 use App\Models\Cart;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
@@ -33,6 +34,7 @@ class SaleCreate extends Component
     }
 
     //Agregar producto al carrito
+    #[On('add-product')]
     public function addProduct(Product $product){
         //dump($product);
         Cart::add($product);
@@ -46,6 +48,7 @@ class SaleCreate extends Component
     //Incrementar producto del carrito
     public function increment($id){
         Cart::increment($id);
+        $this->dispatch("decrementStock.{$id}");
     }
 
     //Eliminar producto del carrito
