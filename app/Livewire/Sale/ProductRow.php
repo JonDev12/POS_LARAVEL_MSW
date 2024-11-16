@@ -15,7 +15,8 @@ class ProductRow extends Component
     protected function getListeners()
     {
         return [
-            "decrementStock.{$this->product->id}" => 'decrementStock'
+            "decrementStock.{$this->product->id}" => 'decrementStock',
+            "incrementStock.{$this->product->id}" => 'incrementStock'
         ];
     }
     public function render()
@@ -40,6 +41,14 @@ class ProductRow extends Component
 
     public function decrementStock(){
         $this->stock--;
+    }
+
+    public function incrementStock(){
+        if($this->stock == $this->product->stock - 1){
+            return;
+        }
+         
+        $this->stock++;
     }
 
     public function stockLabel(){

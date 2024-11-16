@@ -43,6 +43,7 @@ class SaleCreate extends Component
     //Decrementar producto del carrito
     public function decrement($id){
         Cart::decrement($id);
+        $this->dispatch("incrementStock.{$id}");
     }
 
     //Incrementar producto del carrito
