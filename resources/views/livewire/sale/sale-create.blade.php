@@ -14,6 +14,8 @@
             {{-- Detalles venta --}}
             <div class="col-md-6">
                 @include('sales.card-details')
+                {{--Pago venta--}}
+                @include('sales.card-pago')
             </div>
             {{-- Detalles productos --}}
             <div class="col-md-6">

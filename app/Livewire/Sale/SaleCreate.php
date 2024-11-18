@@ -18,6 +18,9 @@ class SaleCreate extends Component
     public $search = '';
     public $cant = 5;
     public $totalRegistros = 0;
+    //Propiedades de pago
+    public $pago = 0;
+    public $devuelve= 0;
 
     public function render()
     {
@@ -53,14 +56,16 @@ class SaleCreate extends Component
     }
 
     //Eliminar producto del carrito
-    public function removeItem($id){
+    public function removeItem($id, $qty){
         Cart::removeItem($id);
+        $this->dispatch("devolverStock.{$id}", $qty);
     }
 
     //Cancelar venta
     public function clear(){
         Cart::clear();
         $this->dispatch('msg', 'Venta cancelada');
+        $this->dispatch('refreshProducts');
     }
 
     //Prppiedad para obtener los productos
