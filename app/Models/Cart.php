@@ -3,7 +3,7 @@
 namespace App\Models;
 
 
-class Cart
+class Cart 
 {
     //Agregar producto al carrito
     public static function add(Product $product)

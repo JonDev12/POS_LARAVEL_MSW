@@ -13,7 +13,8 @@ class Messages extends Component
     }
 
     #[On('msg')]
-    public function msg($msg){
+    public function msg($msg,$type="success"){
         session()->flash('msg', $msg);
+        session()->flash('type', $type);
     }
 }

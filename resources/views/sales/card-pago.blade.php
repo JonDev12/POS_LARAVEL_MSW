@@ -6,7 +6,7 @@
 
             <span class="mr-2">Total: <b>{{money($total)}}</b></span>
 
-            <!-- Incluir boton moneda -->
+            @livewire('sale.currency',['total'=>$total])
             
         </div>
     </div>
@@ -22,7 +22,7 @@
                         </span>
                     </div>
 
-                    <input type="number" wire:model="pago" class="form-control" id="pago" min="">
+                    <input type="number" wire:model.live="pago" class="form-control" id="pago" min="">
 
                 </div>
                 <p>{{numerosLetras($pago)}}</p>
