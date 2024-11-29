@@ -12,6 +12,7 @@ use App\Livewire\Home\Inicio as HomeInicio;
 use App\Livewire\Sale\SaleCreate;
 use App\Livewire\Sale\SaleList;
 use App\Livewire\Sale\SaleShow;
+use App\Livewire\Shop\ShopComponent;
 use App\Livewire\User\UserComponent;
 use App\Livewire\User\UserShow;
 
@@ -46,4 +47,5 @@ Route::get('/clientes/{client}', ClientShow::class)->name('clients.show')->middl
 Route::get('/ventas/crear', SaleCreate::class)->name('sales.create')->middleware(['auth']);
 Route::get('/sales', SaleList::class)->name('sales.list')->middleware(['auth']);
 Route::get('/sales/{sale}', SaleShow::class)->name('sales.show')->middleware(['auth']);
+Route::get('/tienda', ShopComponent::class)->name('tienda')->middleware(['auth']);
 
