@@ -90,7 +90,7 @@ class SaleCreate extends Component
             }
             Cart::clear();
             $this->reset(['pago','devuelve','client']);
-            $this->dispatch('msg','Venta creada correctamente');
+            $this->dispatch('msg','Venta creada correctamente','success', $sale->id);
         });
         
     }
