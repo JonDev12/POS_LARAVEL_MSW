@@ -6,7 +6,7 @@
         <div class="info-box-content">
           <span class="info-box-text">Ventas</span>
           <span class="info-box-number">
-            0
+            {{$cantidadVentas}}
             
           </span>
         </div>
@@ -21,7 +21,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Total ventas</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{money($totalVentas)}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -38,7 +38,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Articulos Vendidos</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{$cantidadArticulos}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -51,7 +51,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Productos Vendidos</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{$cantidadProductos}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
