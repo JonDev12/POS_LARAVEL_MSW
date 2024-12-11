@@ -70,7 +70,7 @@
         <div class="info-box-content">
           <span class="info-box-text">Productos</span>
           <span class="info-box-number">
-            0
+            {{$cantidadProducts}}
             
           </span>
         </div>
@@ -85,7 +85,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Stock total</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{$cantidadStock}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -102,7 +102,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Categorias</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{$cantidadCategories}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -115,7 +115,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Clientes</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-number">{{$cantidadClients}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>

@@ -4,7 +4,10 @@ namespace App\Livewire\Home;
 
 use App\Models\Item;
 use App\Models\Sale;
+use App\Models\Product;
 use Livewire\Component;
+use App\Models\Category;
+use App\Models\Client;
 use Livewire\Attributes\Title;
 
 #[Title('Inicio')]
@@ -23,6 +26,10 @@ class Inicio extends Component
     public $totalVentas = 0;
     public $cantidadArticulos = 0;
     public $cantidadProductos = 0;
+    public $cantidadProducts = 0;
+    public $cantidadStock = 0;
+    public $cantidadCategories = 0;
+    public $cantidadClients = 0;
     public function render()
     {
         $this->sales_today();
@@ -54,5 +61,9 @@ class Inicio extends Component
         $this->cantidadProductos = Item::whereYear('fecha', '=', date('Y'))
         ->selectRaw('COUNT(DISTINCT product_id) as total')
         ->value('total');
+        $this->cantidadProducts = Product::count();
+        $this->cantidadStock = Product::sum('stock');
+        $this->cantidadCategories = Category::count();
+        $this->cantidadClients = Client::count();
     }
 }
