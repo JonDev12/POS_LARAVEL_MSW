@@ -17,10 +17,13 @@
         {{--card grafica--}}
         @include('home.card-graph')
         {{--Carga de grafica de ventas--}}
-        {{$listTotalVentasMes}}
+        {{--{{$listTotalVentasMes}}--}}
         {{--Boxes reports--}}
         @include('home.boxes-reports')
+        {{--Tablas de reportes--}}
         @include('home.tables-reports')
+        {{---Mejores compradores/vendedores--}}
+        @include('home.best-sellers-buyers')
     </x-card>
 
 </div>

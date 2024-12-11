@@ -17,7 +17,7 @@
                             <b>Productos</b> <a class="float-right">{{count($category->products)}}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>Articulos</b> <a class="float-right">0</a>
+                            <b>Articulos</b> <a class="float-right">{{$products->sum('stock')}}</a>
                         </li>
                     </ul>
                 </div>
@@ -36,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($category->products as $product)
+                    @foreach ($products as $product)
                     <tr>
                         <td>{{$product->id}}</td>
                         <td>
@@ -50,6 +50,7 @@
                     
                 </tbody>
             </table>
+            {{$products->links()}}
         </div>
     </div>
 

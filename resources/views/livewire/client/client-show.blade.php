@@ -47,27 +47,34 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th>Precio de Venta</th>
-                        <th>Stock</th>
+                        <th>Total</th>
+                        <th>Productos</th>
+                        <th>Articulos</th>
+                        <th>...</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{--@foreach ($category->products as $product)
+                    @foreach ($sales as $sale)
                     <tr>
-                        <td>{{$product->id}}</td>
                         <td>
-                            <x-image :item="$product"/>
+                            <b>FV-{{$sale->id}}</td></b>
+                        <td>
+                            {{money($sale->total)}}
                         </td>
-                        <td>{{$product->name}}</td>
-                        <td>{!!$product->precio!!}</td>
-                        <td>{!!$product->stockLabel!!}</td>
+                        <td>
+                            <span class="badge badge-pill badge-primary">{{$sale->items->count()}}</span>
+                        </td>
+                        <td>
+                            <span class="badge badge-pill badge-primary">{{$sale->items->sum('pivot.qty')}}</span>
+                        </td>
+                        <td>
+                            <a href="{{route('sales.show', $sale)}}" class="btn btn-primary btn-sm">Ver venta</a>
+                        </td>
                     </tr>
-                    @endforeach--}}
-                    
+                    @endforeach
                 </tbody>
             </table>
+            {{$sales->links()}}
         </div>
     </div>
 
