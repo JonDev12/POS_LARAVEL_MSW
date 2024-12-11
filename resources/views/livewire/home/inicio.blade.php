@@ -20,6 +20,7 @@
         {{$listTotalVentasMes}}
         {{--Boxes reports--}}
         @include('home.boxes-reports')
+        @include('home.tables-reports')
     </x-card>
 
 </div>

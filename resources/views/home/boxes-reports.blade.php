@@ -21,7 +21,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Total ventas</span>
-          <span class="info-box-number">{{money($totalVentas)}}</span>
+          <span class="info-box-number">{{money($totalventas)}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
