@@ -11,6 +11,7 @@ use App\Livewire\Client\ClientShow;
 use App\Livewire\Category\CategoryShow;
 use App\Livewire\Home\Inicio as HomeInicio;
 use App\Livewire\Sale\SaleCreate;
+use App\Livewire\Sale\SaleEdit;
 use App\Livewire\Sale\SaleList;
 use App\Livewire\Sale\SaleShow;
 use App\Livewire\Shop\ShopComponent;
@@ -50,5 +51,4 @@ Route::get('/sales', SaleList::class)->name('sales.list')->middleware(['auth']);
 Route::get('/sales/{sale}', SaleShow::class)->name('sales.show')->middleware(['auth']);
 Route::get('/tienda', ShopComponent::class)->name('tienda')->middleware(['auth']);
 Route::get('/sales/invoice/{sale}', [PdfController::class, 'invoice'])->name('sales.invoice')->middleware(['auth']);
-
-
+Route::get('/sales/{sale}/edit', SaleEdit::class)->name('sales.edit')->middleware(['auth']);
