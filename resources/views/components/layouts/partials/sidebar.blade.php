@@ -27,7 +27,7 @@
                with font-awesome or any other icon font library -->
 
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">
+                    <a href="{{ route('home') }}" class="nav-link {{$title == 'Inicio' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-store"></i>
                         <p>
                             Inicio
@@ -36,7 +36,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="#" class="nav-link {{$title == 'Ventas' ? 'active' : ''}}">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Ventas
@@ -64,7 +64,7 @@
 
                 @if (isAdmin())
                     <li class="nav-item">
-                        <a href="{{ route('categories') }}" class="nav-link">
+                        <a href="{{ route('categories') }}" class="nav-link {{$title == 'Categorías' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-th-large"></i>
                             <p>
                                 Categorias
@@ -74,7 +74,7 @@
 
 
                     <li class="nav-item">
-                        <a href="{{ route('products') }}" class="nav-link">
+                        <a href="{{ route('products') }}" class="nav-link {{$title == 'Productos' ? 'active' : ''}}">
                             <i class="nav-icon fa fa-cubes"></i>
                             <p>
                                 Productos
@@ -83,7 +83,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('clients') }}" class="nav-link">
+                        <a href="{{ route('clients') }}" class="nav-link {{$title == 'Clientes' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-user-friends"></i>
                             <p>
                                 Clientes
@@ -92,7 +92,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('users') }}" class="nav-link">
+                        <a href="{{ route('users') }}" class="nav-link {{$title == 'Usuarios' ? 'active' : ''}}">
                             <i class="nav-icon fa fa-users"></i>
                             <p>
                                 Usuarios
@@ -101,7 +101,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('tienda') }}" class="nav-link">
+                        <a href="{{ route('tienda') }}" class="nav-link {{$title == 'Tienda' ? 'active' : ''}}">
                             <i class="nav-icon fas fa-store-alt"></i>
                             <p>
                                 Tienda
