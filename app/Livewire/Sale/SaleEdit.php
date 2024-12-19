@@ -6,9 +6,10 @@ use App\Models\Cart;
 use App\Models\Sale;
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
-use Livewire\WithPagination;
 
 #[Title('Editar venta')]
 class SaleEdit extends Component
@@ -38,6 +39,7 @@ class SaleEdit extends Component
             $existeItem = \Cart::session(userID())->get($item->product_id);
 
             if($existeItem){
+                $this->cart = Cart::getCart();
                 return;
             }else{
                 \Cart::session(userID())->add([
@@ -56,6 +58,30 @@ class SaleEdit extends Component
     public function mount()
     {
         //$this->cart = collect();
+    }
+    //Agregar producto al carrito
+    #[On('add-product')]
+    public function addProduct(Product $product){
+        //dump($product);
+        Cart::add($product);
+    }
+
+    //Decrementar producto del carrito
+    public function decrement($id){
+        Cart::decrement($id);
+        $this->dispatch("incrementStock.{$id}");
+    }
+
+    //Incrementar producto del carrito
+    public function increment($id){
+        Cart::increment($id);
+        $this->dispatch("decrementStock.{$id}");
+    }
+
+    //Eliminar producto del carrito
+    public function removeItem($id, $qty){
+        Cart::removeItem($id);
+        $this->dispatch("devolverStock.{$id}", $qty);
     }
 
      //Prppiedad para obtener los productos
