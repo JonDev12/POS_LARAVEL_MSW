@@ -38,7 +38,7 @@
 
             <p>
               {{auth()->user()->name}}
-              <small>{{auth()->user()->perfil ? 'Administrador' : 'Vendedor'}}</small>
+              <small>{{auth()->user()->admin ? 'Administrador' : 'Vendedor'}}</small>
             </p>
           </li>
           <!-- Menu Body -->

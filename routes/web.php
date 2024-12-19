@@ -38,7 +38,7 @@ Auth::routes(['register' => false]);
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', HomeInicio::class)->name('home')->middleware(['auth']);
-Route::get('/categorias', CategoryComponent::class)->name('categories')->middleware(['auth']);
+Route::get('/categorias', CategoryComponent::class)->name('categories')->middleware(['auth', 'admin']);
 Route::get('/categorias/{category}', CategoryShow::class)->name('categories.show')->middleware(['auth']);
 Route::get('/productos', ProductComponent::class)->name('products')->middleware(['auth']);
 Route::get('/productos/{product}', ProductShow::class)->name('products.show')->middleware(['auth']);
