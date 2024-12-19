@@ -11,7 +11,7 @@ use Livewire\WithPagination;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Computed;
 
-#[Title('Editar venta')]
+#[Title('Ventas')]
 class SaleEdit extends Component
 {
     use WithPagination;
@@ -21,15 +21,26 @@ class SaleEdit extends Component
     public $totalRegistros = 0;
     public Sale $sale;
     public $cart;
+    public $loadCart = false;
 
     public function render()
     {
-        $this->getItemsToCart();
+        if (!$this->loadCart) {
+            $this->getItemsToCart();
+        } else {
+            $this->cart = Cart::getCart();
+        }
+        
+       
         return view('livewire.sale.sale-edit', [
             'totalArticulos' => Cart::totalArticulos(),
             'total' => Cart::getTotal(),
             'products' => $this->products(),
         ]);
+    }
+
+    public function editSale(){
+        dump('Editar');
     }
 
     public function getItemsToCart()
@@ -52,6 +63,7 @@ class SaleEdit extends Component
                 ]);
             }
         }
+        $this->loadCart = true;
         $this->cart = Cart::getCart();
     }
 
