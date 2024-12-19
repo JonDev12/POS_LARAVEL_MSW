@@ -2,12 +2,13 @@
 
 namespace App\Livewire\Sale;
 
-use App\Models\Product;
+use App\Models\Cart;
 use App\Models\Sale;
-use Livewire\Attributes\On;
+use App\Models\Product;
 use Livewire\Component;
-use Livewire\Attributes\Title;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use Livewire\Attributes\Title;
 
 #[Title('Ventas')]
 class SaleList extends Component
@@ -22,6 +23,7 @@ class SaleList extends Component
     public $dateFin;
     public function render()
     {
+        Cart::clear();
         if ($this->search != '') {
             $this->resetPage();
         }

@@ -23,6 +23,7 @@ class SaleEdit extends Component
 
     public function render()
     {
+        $this->getItemsToCart();
         return view('livewire.sale.sale-edit', [
             'totalArticulos' => Cart::totalArticulos(),
             'total' => Cart::getTotal(),
@@ -30,9 +31,31 @@ class SaleEdit extends Component
         ]);
     }
 
+    public function getItemsToCart()
+    {
+        foreach ($this->sale->items as $item) {
+            $product = Product::find($item->product_id);
+            $existeItem = \Cart::session(userID())->get($item->product_id);
+
+            if($existeItem){
+                return;
+            }else{
+                \Cart::session(userID())->add([
+                    'id' => $item->product_id,
+                    'name' => $item->name,
+                    'price' => $item->price,
+                    'quantity' => $item->qty,
+                    'attributes' => [],
+                    'associatedModel' => $product,
+                ]);
+            }
+        }
+        $this->cart = Cart::getCart();
+    }
+
     public function mount()
     {
-        $this->cart = collect();
+        //$this->cart = collect();
     }
 
      //Prppiedad para obtener los productos

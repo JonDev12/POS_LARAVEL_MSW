@@ -1,4 +1,5 @@
 <div>
+    
     <x-card cardTitle="Crear Venta">
        <x-slot:cardTools>
           <a href="{{route('sales.list')}}" class="btn btn-primary btn-sm mr-2" {{--wire:click='create'--}}>
