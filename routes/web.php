@@ -43,12 +43,12 @@ Route::get('/categorias/{category}', CategoryShow::class)->name('categories.show
 Route::get('/productos', ProductComponent::class)->name('products')->middleware(['auth', 'admin']);
 Route::get('/productos/{product}', ProductShow::class)->name('products.show')->middleware(['auth', 'admin']);
 Route::get('/usuarios', UserComponent::class)->name('users')->middleware(['auth', 'admin']);
-Route::get('/usuarios/{user}', UserShow::class)->name('users.show')->middleware(['auth', 'admin']);
+Route::get('/usuarios/{user}', UserShow::class)->name('users.show')->middleware(['auth']);
 Route::get('/clientes', ClientComponent::class)->name('clients')->middleware(['auth', 'admin']);
 Route::get('/clientes/{client}', ClientShow::class)->name('clients.show')->middleware(['auth', 'admin']);
 Route::get('/ventas/crear', SaleCreate::class)->name('sales.create')->middleware(['auth']);
 Route::get('/sales', SaleList::class)->name('sales.list')->middleware(['auth', 'admin']);
-Route::get('/sales/{sale}', SaleShow::class)->name('sales.show')->middleware(['auth', 'admin']);
+Route::get('/sales/{sale}', SaleShow::class)->name('sales.show')->middleware(['auth']);
 Route::get('/tienda', ShopComponent::class)->name('tienda')->middleware(['auth', 'admin']);
 Route::get('/sales/invoice/{sale}', [PdfController::class, 'invoice'])->name('sales.invoice')->middleware(['auth']);
 Route::get('/sales/{sale}/edit', SaleEdit::class)->name('sales.edit')->middleware(['auth', 'admin']);
