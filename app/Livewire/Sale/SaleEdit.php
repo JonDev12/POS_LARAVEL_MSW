@@ -62,7 +62,7 @@ class SaleEdit extends Component
             $item->name = $product->name;
             $item->price = $product->price;
             $item->qty = $product->quantity;
-            $item->image = $product->associatedModel->image->url;
+            $item->image = $product->associatedModel->imagen;
             $item->product_id = $product->id;
             $item->fecha = date('Y-m-d');
             $item->save();

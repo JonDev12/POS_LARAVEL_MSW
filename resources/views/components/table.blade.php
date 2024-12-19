@@ -10,7 +10,10 @@
         </select>
         <span>Entradas</span>
     </div>
-    <div>
+    <div class="d-flex align-items-center justify-content-between">
+        <div wire:loading wire:starget='search' class="spinner-grow text-info mr-2" role="status">
+            <span class="visually-hidden"></span>
+          </div>
         <input type="text" wire:model.live="search" class="form-control" placeholder="Buscar">
     </div>
 </div>
