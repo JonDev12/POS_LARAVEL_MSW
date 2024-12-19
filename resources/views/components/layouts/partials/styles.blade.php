@@ -10,4 +10,6 @@
 <link rel="stylesheet" href="{{asset('plugins/sweetalert2/sweetalert2.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
 <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+<link rel="stylesheet" href="{{asset('css/dark.css')}}">
+
 @yield('styles')

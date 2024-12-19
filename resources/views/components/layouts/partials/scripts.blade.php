@@ -9,4 +9,6 @@
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
 <!-- SweetAlert -->
 <script src="{{asset('plugins/sweetalert2/sweetalert2.js')}}"></script>
+<script src="{{asset('js/dark.js')}}"></script>
+
 @yield('js')
