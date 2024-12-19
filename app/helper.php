@@ -14,3 +14,7 @@ function money($number){
 function numerosLetras($number){
     return App\Models\NumerosEnLetras::convertir($number, 'Pesos', false, 'Centavos');
 }
+
+function isAdmin(){
+    return auth()->user()->admin;
+}
